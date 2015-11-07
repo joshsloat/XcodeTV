@@ -30,7 +30,6 @@ static NSString * const kUserDefaultsKeyHostDescription = @"HostDescription";
         }
     });
     
-    
     return _sharedManager;
 }
 

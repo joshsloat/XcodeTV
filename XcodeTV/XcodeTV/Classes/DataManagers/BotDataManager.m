@@ -75,11 +75,17 @@
 
         [queue waitUntilAllOperationsAreFinished];
         
-        NSLog(@"All requests are done!");
+        if (success)
+        {
+            success(nil, collection);
+        }
     }
     failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
     {
-        NSLog(@"%@", error);
+        if (failure)
+        {
+            failure(nil, error);
+        }
     }];
 }
 

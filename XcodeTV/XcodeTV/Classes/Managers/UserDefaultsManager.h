@@ -10,7 +10,7 @@
 
 @interface UserDefaultsManager : NSObject
 
-// TODO: this will need to be an array
+// TODO: this will need to be an array - maybe store array of server object JSON?
 @property (nonatomic, copy) NSString *baseAPIURLString;
 @property (nonatomic, copy) NSString *hostDescription;
 
