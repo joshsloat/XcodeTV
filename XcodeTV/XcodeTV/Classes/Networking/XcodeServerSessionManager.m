@@ -44,6 +44,9 @@
     {
         self.securityPolicy.allowInvalidCertificates = YES;
         self.securityPolicy.validatesDomainName = NO;
+        
+        Server *server = [ServerDataManager defaultServerConfiguration];
+        [self.requestSerializer setAuthorizationHeaderFieldWithUsername:server.username password:server.password];
     }
     
     return self;
