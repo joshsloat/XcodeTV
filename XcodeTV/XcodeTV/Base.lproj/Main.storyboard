@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Prod-->
@@ -16,26 +17,88 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hiP-TJ-YiN">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hiP-TJ-YiN">
                                 <rect key="frame" x="0.0" y="1002" width="1920" height="78"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOX-93-x8a">
-                                        <rect key="frame" x="0.0" y="0.0" width="117" height="77"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOX-93-x8a">
+                                        <rect key="frame" x="0.0" y="0.0" width="117" height="78"/>
                                         <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="117" id="K3f-CU-hPz"/>
+                                            <constraint firstAttribute="height" constant="78" id="pjG-ED-rUn"/>
+                                        </constraints>
                                         <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                        <state key="normal" image="Settings"/>
                                         <connections>
                                             <action selector="didSelectAdd:" destination="9pv-A4-QxB" eventType="primaryActionTriggered" id="UaS-OG-KgW"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WL3-m9-xKS">
+                                        <rect key="frame" x="167" y="39" width="0.0" height="0.0"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="be4-Hh-g8I">
+                                        <rect key="frame" x="217" y="39" width="0.0" height="0.0"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UlZ-VB-uqK">
+                                        <rect key="frame" x="267" y="39" width="0.0" height="0.0"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAb-rk-dro">
+                                        <rect key="frame" x="1850" y="27" width="49" height="24"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="tF1-fJ-HRg">
+                                        <rect key="frame" x="940" y="19" width="40" height="40"/>
+                                        <animations/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="UlZ-VB-uqK" firstAttribute="centerY" secondItem="hiP-TJ-YiN" secondAttribute="centerY" id="7k9-Av-uPe"/>
+                                    <constraint firstAttribute="trailing" secondItem="dAb-rk-dro" secondAttribute="trailing" constant="21" id="88Z-xO-tKK"/>
+                                    <constraint firstItem="WL3-m9-xKS" firstAttribute="leading" secondItem="LOX-93-x8a" secondAttribute="trailing" constant="50" id="FpB-Sn-0Dp"/>
+                                    <constraint firstItem="UlZ-VB-uqK" firstAttribute="leading" secondItem="be4-Hh-g8I" secondAttribute="trailing" constant="50" id="Jzu-B7-Lr5"/>
+                                    <constraint firstItem="LOX-93-x8a" firstAttribute="leading" secondItem="hiP-TJ-YiN" secondAttribute="leading" id="QLJ-OC-gW3"/>
+                                    <constraint firstItem="dAb-rk-dro" firstAttribute="centerY" secondItem="hiP-TJ-YiN" secondAttribute="centerY" id="Si8-Pt-fC1"/>
+                                    <constraint firstAttribute="bottom" secondItem="LOX-93-x8a" secondAttribute="bottom" id="bid-yx-VFw"/>
+                                    <constraint firstAttribute="height" constant="78" id="hiY-N3-gL2"/>
+                                    <constraint firstItem="be4-Hh-g8I" firstAttribute="leading" secondItem="WL3-m9-xKS" secondAttribute="trailing" constant="50" id="kru-zX-HWh"/>
+                                    <constraint firstItem="be4-Hh-g8I" firstAttribute="centerY" secondItem="hiP-TJ-YiN" secondAttribute="centerY" id="sax-8L-MnP"/>
+                                    <constraint firstItem="WL3-m9-xKS" firstAttribute="centerY" secondItem="hiP-TJ-YiN" secondAttribute="centerY" id="yrT-jx-2IA"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="hiP-TJ-YiN" secondAttribute="trailing" constant="-20" id="70e-FM-3jN"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="hiP-TJ-YiN" secondAttribute="bottom" id="JyG-Ue-6V6"/>
+                            <constraint firstItem="hiP-TJ-YiN" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-20" id="skU-bg-rAo"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Prod" image="Integration" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="addressLabel" destination="dAb-rk-dro" id="nfm-TM-1cM"/>
+                        <outlet property="osServerVersionLabel" destination="be4-Hh-g8I" id="WMd-Wr-Int"/>
+                        <outlet property="osVersionLabel" destination="WL3-m9-xKS" id="gmJ-K8-9wn"/>
+                        <outlet property="serverActivityIndicator" destination="tF1-fJ-HRg" id="ZGT-lw-Rd1"/>
+                        <outlet property="xcodeVersionLabel" destination="UlZ-VB-uqK" id="Up4-QG-4qB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -107,6 +170,7 @@
     </scenes>
     <resources>
         <image name="Integration" width="30" height="30"/>
+        <image name="Settings" width="50" height="50"/>
         <image name="TabBackground-Small" width="1920" height="120"/>
     </resources>
 </document>

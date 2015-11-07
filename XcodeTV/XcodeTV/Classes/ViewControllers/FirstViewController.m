@@ -19,6 +19,11 @@
 @property (nonatomic, strong) UITextField *descriptionTextField;
 @property (nonatomic, strong) UITextField *passwordTextField;
 @property (nonatomic, strong) UITextField *usernameTextField;
+@property (nonatomic, weak) IBOutlet UILabel *addressLabel;
+@property (nonatomic, weak) IBOutlet UILabel *osVersionLabel;
+@property (nonatomic, weak) IBOutlet UILabel *osServerVersionLabel;
+@property (nonatomic, weak) IBOutlet UILabel *xcodeVersionLabel;
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *serverActivityIndicator;
 
 @end
 
@@ -34,8 +39,6 @@
     {
         [self getBots];
     }
-    
-    self.view
 }
 
 #pragma mark - Authentication
@@ -122,10 +125,21 @@
 
 - (void)getBots
 {
+    __weak typeof(self) weakSelf = self;
+    
     Server *server = [ServerDataManager defaultServerConfiguration];
+    
+    self.addressLabel.text = server.hostAddress;
+    
     [ServerDataManager getServerVersionsForServer:server withSuccess:^(NSDictionary *infoDictionary, id payload)
     {
-        NSLog(@"");
+        ServerVersions *serverVersions = payload;
+        
+        weakSelf.osVersionLabel.text = [NSString stringWithFormat:@"OS X %@", serverVersions.os];
+        weakSelf.osServerVersionLabel.text = [NSString stringWithFormat:@"OS X Server %@", serverVersions.server];
+        weakSelf.xcodeVersionLabel.text = [NSString stringWithFormat:@"Xcode %@", serverVersions.xcode];
+        
+        [weakSelf.serverActivityIndicator stopAnimating];
     }
     failure:^(NSDictionary *infoDictionary, NSError *error)
     {
