@@ -12,5 +12,6 @@
 
 + (NSString *)botsEndpoint;
 + (NSString *)integrationsEndpointForBotIdentifier:(NSString *)identifier;
++ (NSString *)versionsEndpoint;
 
 @end

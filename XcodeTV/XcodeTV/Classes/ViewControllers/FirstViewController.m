@@ -13,8 +13,6 @@
 
 @interface FirstViewController ()
 
-@property (nonatomic, strong) BotDataManager *dataManager;
-
 @property (nonatomic, strong) UIAlertAction *passwordAlertAction;
 
 @property (nonatomic, strong) UITextField *serverAddressTextField;
@@ -36,6 +34,8 @@
     {
         [self getBots];
     }
+    
+    self.view
 }
 
 #pragma mark - Authentication
@@ -122,9 +122,19 @@
 
 - (void)getBots
 {
-    self.dataManager = [BotDataManager new];
+    Server *server = [ServerDataManager defaultServerConfiguration];
+    [ServerDataManager getServerVersionsForServer:server withSuccess:^(NSDictionary *infoDictionary, id payload)
+    {
+        NSLog(@"");
+    }
+    failure:^(NSDictionary *infoDictionary, NSError *error)
+    {
+        NSLog(@"");
+    }];
     
-    [self.dataManager getBotsWithSuccess:^(NSDictionary *infoDictionary, id payload)
+    BotDataManager *botDataManager = [BotDataManager new];
+    
+    [botDataManager getBotsWithSuccess:^(NSDictionary *infoDictionary, id payload)
     {
         NSLog(@"");
     }

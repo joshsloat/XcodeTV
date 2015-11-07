@@ -22,4 +22,9 @@
     return urlString;
 }
 
++ (NSString *)versionsEndpoint
+{
+    return @"api/versions";
+}
+
 @end

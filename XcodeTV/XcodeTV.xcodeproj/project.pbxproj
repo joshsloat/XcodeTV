@@ -40,6 +40,7 @@
 		A4F652A91BEC5D35008F0B14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4F652A71BEC5D35008F0B14 /* Main.storyboard */; };
 		A4F652B61BEC5D35008F0B14 /* XcodeTVTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F652B51BEC5D35008F0B14 /* XcodeTVTests.m */; };
 		A4F652C11BEC5D35008F0B14 /* XcodeTVUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F652C01BEC5D35008F0B14 /* XcodeTVUITests.m */; };
+		A4F7A8501BEDADBA00D30E87 /* ServerVersions.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F7A84F1BEDADBA00D30E87 /* ServerVersions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,8 @@
 		A4F652BC1BEC5D35008F0B14 /* XcodeTVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XcodeTVUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4F652C01BEC5D35008F0B14 /* XcodeTVUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XcodeTVUITests.m; sourceTree = "<group>"; };
 		A4F652C21BEC5D35008F0B14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4F7A84E1BEDADBA00D30E87 /* ServerVersions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerVersions.h; path = Classes/Models/ServerVersions.h; sourceTree = "<group>"; };
+		A4F7A84F1BEDADBA00D30E87 /* ServerVersions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerVersions.m; path = Classes/Models/ServerVersions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +224,8 @@
 				A47F66A51BED159300F6BBFF /* BaseModel.m */,
 				A47F66B61BED669800F6BBFF /* Server.h */,
 				A47F66B71BED669800F6BBFF /* Server.m */,
+				A4F7A84E1BEDADBA00D30E87 /* ServerVersions.h */,
+				A4F7A84F1BEDADBA00D30E87 /* ServerVersions.m */,
 				A47F66981BECA60A00F6BBFF /* BotCollection.h */,
 				A47F66991BECA60A00F6BBFF /* BotCollection.m */,
 				A47F669B1BECA68A00F6BBFF /* Bot.h */,
@@ -530,6 +535,7 @@
 				A47F669A1BECA60A00F6BBFF /* BotCollection.m in Sources */,
 				A4B9C6541BEC8CB0004E7E6C /* AFNetworkReachabilityManager.m in Sources */,
 				A47F66B81BED669800F6BBFF /* Server.m in Sources */,
+				A4F7A8501BEDADBA00D30E87 /* ServerVersions.m in Sources */,
 				A47F66B31BED4F3B00F6BBFF /* UserDefaultsManager.m in Sources */,
 				A47F66AC1BED394E00F6BBFF /* Integration.m in Sources */,
 				A4B9D70D1BEC889D000F1EEA /* SecondViewController.m in Sources */,

@@ -8,6 +8,9 @@
 
 #import "ServerDataManager.h"
 #import "UserDefaultsManager.h"
+#import "XcodeServiceURLs.h"
+#import "XcodeServerSessionManager.h"
+#import "ServerVersions.h"
 
 @implementation ServerDataManager
 
@@ -48,6 +51,31 @@
     server.password = credential.password;
 
     return server;
+}
+
++ (void)getServerVersionsForServer:(Server *)server
+                       withSuccess:(ServerDataManagerSuccessBlock)success
+                           failure:(ServerDataManagerFailureBlock)failure
+{
+    [[XcodeServerSessionManager sharedManager] GET:[XcodeServiceURLs versionsEndpoint]
+                                        parameters:nil
+                                           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject)
+    {
+        NSError *jsonModelError = nil;
+        ServerVersions *serverVersions = [[ServerVersions alloc] initWithDictionary:responseObject error:&jsonModelError];
+        
+        if (success)
+        {
+            success(nil, serverVersions);
+        }
+    }
+    failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
+    {
+        if (failure)
+        {
+            failure(nil, error);
+        }
+    }];
 }
 
 #pragma mark - Private Methods
