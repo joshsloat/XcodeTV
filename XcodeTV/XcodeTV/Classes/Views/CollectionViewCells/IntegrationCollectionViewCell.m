@@ -114,7 +114,7 @@
 {
     if ([bot.name hasPrefix:@"ScreenRecorder"])
     {
-        self.iconImageView.image = [UIImage imageNamed:@"Peek"];
+        [self roundCornersForImageNamed:@"Peek" inImageView:self.iconImageView];
     }
     else if ([bot.name hasPrefix:@"Storyline"])
     {
@@ -122,12 +122,33 @@
     }
     else if ([bot.name hasPrefix:@"Preso"])
     {
-        self.iconImageView.image = [UIImage imageNamed:@"Preso"];
+        [self roundCornersForImageNamed:@"Preso" inImageView:self.iconImageView];
     }
     else
     {
         self.iconImageView.image = [UIImage imageNamed:@"Bot-HackathonSmall"];
     }
+}
+
+- (void)roundCornersForImageNamed:(NSString *)imageNamed inImageView:(UIImageView *)imageView
+{
+    UIImage *image = [UIImage imageNamed:imageNamed];
+    
+    // Begin a new image that will be the new image with the rounded corners
+    // (here with the size of an UIImageView)
+    UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, NO, 1.0);
+    
+    // Add a clip before drawing anything, in the shape of an rounded rect
+    [[UIBezierPath bezierPathWithRoundedRect:imageView.bounds
+                                cornerRadius:10.0] addClip];
+    // Draw your image
+    [image drawInRect:imageView.bounds];
+    
+    // Get the image, here setting the UIImageView image
+    imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // Lets forget about that we were drawing
+    UIGraphicsEndImageContext();
 }
 
 @end
