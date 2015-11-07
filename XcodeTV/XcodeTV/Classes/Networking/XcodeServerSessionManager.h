@@ -1,5 +1,5 @@
 //
-//  BotSessionManager.h
+//  XcodeServerSessionManager.h
 //  XcodeTV
 //
 //  Created by Josh Sloat on 11/6/15.
@@ -8,6 +8,8 @@
 
 #import "AFHTTPSessionManager.h"
 
-@interface BotSessionManager : AFHTTPSessionManager
+@interface XcodeServerSessionManager : AFHTTPSessionManager
+
++ (XcodeServerSessionManager *)sharedManager;
 
 @end

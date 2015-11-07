@@ -7,50 +7,28 @@
 //
 
 #import "BotDataManager.h"
-#import "BotSessionManager.h"
+#import "XcodeServerSessionManager.h"
 #import "BotCollection.h"
 #import "AFNetworking.h"
 #import "TRVSURLSessionOperation.h"
 #import "IntegrationCollection.h"
 #import "XcodeServiceURLs.h"
-#import "ServerDataManager.h"
 
 @interface BotDataManager ()
-
-@property (nonatomic, strong) BotSessionManager *botSessionManager;
 
 @end
 
 @implementation BotDataManager
-
-#pragma mark - Properties
-
-- (BotSessionManager *)botSessionManager
-{
-    if (!_botSessionManager)
-    {
-        Server *server = [ServerDataManager defaultServerConfiguration];
-        
-        NSURL *baseURL = [NSURL URLWithString:server.hostAddress];
-        
-        NSURLSessionConfiguration *urlSessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        _botSessionManager = [[BotSessionManager alloc] initWithBaseURL:baseURL sessionConfiguration:urlSessionConfiguration];
-    }
-    
-    return _botSessionManager;
-}
 
 #pragma mark - Public Methods
 
 - (void)getBotsWithSuccess:(BotDataManagerSuccessBlock)success
                    failure:(BotDataManagerFailureBlock)failure
 {
-     __weak typeof(self) weakSelf = self;
-    
     // get the bot collection
-    [self.botSessionManager GET:[XcodeServiceURLs botsEndpoint]
-                     parameters:nil
-                        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject)
+    [[XcodeServerSessionManager sharedManager] GET:[XcodeServiceURLs botsEndpoint]
+                                        parameters:nil
+                                           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject)
     {
         NSError *jsonModelError = nil;
         
@@ -59,7 +37,7 @@
         // get integrations list for each bot
         NSOperationQueue *queue = [[NSOperationQueue alloc] init];
         
-        NSURLSession *session = weakSelf.botSessionManager.session;
+        NSURLSession *session = [XcodeServerSessionManager sharedManager].session;
         
         NSError *requestError = nil;
         
@@ -67,12 +45,12 @@
         {
             NSString *urlString = [XcodeServiceURLs integrationsEndpointForBotIdentifier:bot.identifier];
             
-            urlString = [[NSURL URLWithString:urlString relativeToURL:self.botSessionManager.baseURL] absoluteString];
+            urlString = [[NSURL URLWithString:urlString relativeToURL:[XcodeServerSessionManager sharedManager].baseURL] absoluteString];
             
-            NSURLRequest *request = [weakSelf.botSessionManager.requestSerializer requestWithMethod:@"GET"
-                                                                                          URLString:urlString
-                                                                                         parameters:nil
-                                                                                              error:&requestError];
+            NSURLRequest *request = [[XcodeServerSessionManager sharedManager].requestSerializer requestWithMethod:@"GET"
+                                                                                                         URLString:urlString
+                                                                                                        parameters:nil
+                                                                                                             error:&requestError];
             
             [queue addOperation:[[TRVSURLSessionOperation alloc] initWithSession:session
                                                                          request:request
@@ -82,7 +60,7 @@
                 
                 NSError *serializationError = nil;
                 NSError *jsonModelError = nil;
-                NSDictionary *deserializedResponse = [weakSelf.botSessionManager.responseSerializer
+                NSDictionary *deserializedResponse = [[XcodeServerSessionManager sharedManager].responseSerializer
                                                       responseObjectForResponse:response
                                                       data:data
                                                       error:&serializationError];

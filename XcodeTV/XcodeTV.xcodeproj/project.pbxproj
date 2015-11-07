@@ -24,7 +24,7 @@
 		A4B9C6571BEC8CB0004E7E6C /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B9C6501BEC8CB0004E7E6C /* AFURLResponseSerialization.m */; };
 		A4B9C6581BEC8CB0004E7E6C /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B9C6521BEC8CB0004E7E6C /* AFURLSessionManager.m */; };
 		A4B9C65E1BEC8D5F004E7E6C /* BotDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B9C65D1BEC8D5F004E7E6C /* BotDataManager.m */; };
-		A4B9C6651BEC9244004E7E6C /* BotSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B9C6641BEC9244004E7E6C /* BotSessionManager.m */; };
+		A4B9C6651BEC9244004E7E6C /* XcodeServerSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B9C6641BEC9244004E7E6C /* XcodeServerSessionManager.m */; };
 		A4B9C6691BEC94BE004E7E6C /* XcodeServiceURLs.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B9C6681BEC94BE004E7E6C /* XcodeServiceURLs.m */; };
 		A4B9D70C1BEC889D000F1EEA /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B9D6C71BEC889D000F1EEA /* FirstViewController.m */; };
 		A4B9D70D1BEC889D000F1EEA /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B9D6C91BEC889D000F1EEA /* SecondViewController.m */; };
@@ -94,8 +94,8 @@
 		A4B9C6521BEC8CB0004E7E6C /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		A4B9C65C1BEC8D5F004E7E6C /* BotDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BotDataManager.h; path = Classes/DataManagers/BotDataManager.h; sourceTree = "<group>"; };
 		A4B9C65D1BEC8D5F004E7E6C /* BotDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BotDataManager.m; path = Classes/DataManagers/BotDataManager.m; sourceTree = "<group>"; };
-		A4B9C6631BEC9244004E7E6C /* BotSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BotSessionManager.h; path = Classes/Networking/BotSessionManager.h; sourceTree = "<group>"; };
-		A4B9C6641BEC9244004E7E6C /* BotSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BotSessionManager.m; path = Classes/Networking/BotSessionManager.m; sourceTree = "<group>"; };
+		A4B9C6631BEC9244004E7E6C /* XcodeServerSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XcodeServerSessionManager.h; path = Classes/Networking/XcodeServerSessionManager.h; sourceTree = "<group>"; };
+		A4B9C6641BEC9244004E7E6C /* XcodeServerSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XcodeServerSessionManager.m; path = Classes/Networking/XcodeServerSessionManager.m; sourceTree = "<group>"; };
 		A4B9C6671BEC94BE004E7E6C /* XcodeServiceURLs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XcodeServiceURLs.h; path = Classes/Utilities/XcodeServiceURLs.h; sourceTree = "<group>"; };
 		A4B9C6681BEC94BE004E7E6C /* XcodeServiceURLs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XcodeServiceURLs.m; path = Classes/Utilities/XcodeServiceURLs.m; sourceTree = "<group>"; };
 		A4B9D6C61BEC889D000F1EEA /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
@@ -208,8 +208,8 @@
 		A4B9C65A1BEC8D21004E7E6C /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				A4B9C6631BEC9244004E7E6C /* BotSessionManager.h */,
-				A4B9C6641BEC9244004E7E6C /* BotSessionManager.m */,
+				A4B9C6631BEC9244004E7E6C /* XcodeServerSessionManager.h */,
+				A4B9C6641BEC9244004E7E6C /* XcodeServerSessionManager.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -541,7 +541,7 @@
 				A4B9D7221BEC889D000F1EEA /* JSONModel.m in Sources */,
 				A4F6529D1BEC5D35008F0B14 /* main.m in Sources */,
 				A47F669D1BECA68A00F6BBFF /* Bot.m in Sources */,
-				A4B9C6651BEC9244004E7E6C /* BotSessionManager.m in Sources */,
+				A4B9C6651BEC9244004E7E6C /* XcodeServerSessionManager.m in Sources */,
 				A4B9D7241BEC889D000F1EEA /* JSONModelClassProperty.m in Sources */,
 				A4B9D70C1BEC889D000F1EEA /* FirstViewController.m in Sources */,
 				A4B9D7281BEC889D000F1EEA /* JSONValueTransformer.m in Sources */,
