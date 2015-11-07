@@ -56,6 +56,78 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N49-lH-Qyl">
+                                                    <rect key="frame" x="192" y="82" width="56" height="90"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZwB-n8-GEH">
+                                                            <rect key="frame" x="8" y="4" width="40" height="40"/>
+                                                            <animations/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGc-62-c22">
+                                                            <rect key="frame" x="5" y="47" width="46" height="35"/>
+                                                            <animations/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <animations/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cvE-CC-Huj">
+                                                    <rect key="frame" x="255" y="82" width="56" height="90"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1ds-Z7-1XP">
+                                                            <rect key="frame" x="8" y="4" width="40" height="40"/>
+                                                            <animations/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCb-XH-7lR">
+                                                            <rect key="frame" x="5" y="47" width="46" height="35"/>
+                                                            <animations/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <animations/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sVo-Qt-Oe6">
+                                                    <rect key="frame" x="317" y="82" width="56" height="90"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mb2-uw-MOI">
+                                                            <rect key="frame" x="8" y="4" width="40" height="40"/>
+                                                            <animations/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Puk-tS-bXs">
+                                                            <rect key="frame" x="5" y="47" width="46" height="35"/>
+                                                            <animations/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <animations/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UUN-1L-Tt5">
+                                                    <rect key="frame" x="379" y="82" width="56" height="90"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UxP-u2-T4j">
+                                                            <rect key="frame" x="8" y="4" width="40" height="40"/>
+                                                            <animations/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HnI-pB-rHM">
+                                                            <rect key="frame" x="5" y="47" width="46" height="35"/>
+                                                            <animations/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <animations/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -64,8 +136,20 @@
                                         <connections>
                                             <outlet property="backgroundImageView" destination="yZF-y8-yjy" id="EIH-PG-G6n"/>
                                             <outlet property="botNameLabel" destination="oWD-Id-JFF" id="tT4-7k-MhS"/>
+                                            <outlet property="errorStatusBackgroundView" destination="N49-lH-Qyl" id="Rcj-os-YbX"/>
+                                            <outlet property="errorStatusImageView" destination="ZwB-n8-GEH" id="J0S-md-CTW"/>
+                                            <outlet property="errorStatusLabel" destination="IGc-62-c22" id="6c6-FQ-Nir"/>
                                             <outlet property="iconImageView" destination="e3W-CK-Zkd" id="DeX-6u-mz6"/>
+                                            <outlet property="staticAnalysisBackgroundView" destination="sVo-Qt-Oe6" id="EDK-m0-FP5"/>
+                                            <outlet property="staticAnalysisImageView" destination="Mb2-uw-MOI" id="Rcy-GI-H6f"/>
+                                            <outlet property="staticAnalysisLabel" destination="Puk-tS-bXs" id="j9X-5h-4f6"/>
                                             <outlet property="timeLabel" destination="fHO-AM-H9p" id="fgo-dm-S0T"/>
+                                            <outlet property="unitTestBackgroundView" destination="UUN-1L-Tt5" id="nMj-LD-GUP"/>
+                                            <outlet property="unitTestImageView" destination="UxP-u2-T4j" id="xPh-nw-uWK"/>
+                                            <outlet property="unitTestLabel" destination="HnI-pB-rHM" id="ODE-Ho-0cX"/>
+                                            <outlet property="warningStatusBackgroundView" destination="cvE-CC-Huj" id="gk8-uD-zhr"/>
+                                            <outlet property="warningStatusImageView" destination="1ds-Z7-1XP" id="lDh-oE-OWE"/>
+                                            <outlet property="warningStatusLabel" destination="LCb-XH-7lR" id="3id-E3-olk"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

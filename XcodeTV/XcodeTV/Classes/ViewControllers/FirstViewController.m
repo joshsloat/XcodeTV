@@ -210,7 +210,6 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSLog(@"%lu", self.botCollection.results.count);
     return self.botCollection.results.count;
 }
 

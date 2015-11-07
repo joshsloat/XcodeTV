@@ -15,6 +15,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *botNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) IBOutlet UIView *errorStatusBackgroundView;
+@property (weak, nonatomic) IBOutlet UIImageView *errorStatusImageView;
+@property (weak, nonatomic) IBOutlet UILabel *errorStatusLabel;
+@property (weak, nonatomic) IBOutlet UIView *warningStatusBackgroundView;
+@property (weak, nonatomic) IBOutlet UIImageView *warningStatusImageView;
+@property (weak, nonatomic) IBOutlet UILabel *warningStatusLabel;
+@property (weak, nonatomic) IBOutlet UIView *staticAnalysisBackgroundView;
+@property (weak, nonatomic) IBOutlet UIImageView *staticAnalysisImageView;
+@property (weak, nonatomic) IBOutlet UILabel *staticAnalysisLabel;
+@property (weak, nonatomic) IBOutlet UIView *unitTestBackgroundView;
+@property (weak, nonatomic) IBOutlet UIImageView *unitTestImageView;
+@property (weak, nonatomic) IBOutlet UILabel *unitTestLabel;
 
 @end
 
@@ -48,9 +60,55 @@
     
     [self updateIconWithBot:bot];
     
+    [self updateStatusWithBot:bot];
+    
 }
 
 #pragma mark - Private Methods
+
+
+- (void)updateStatusWithBot:(Bot *)bot
+{
+    [self updateStatusViewUsingImageView:self.errorStatusImageView
+                              imageNamed:@"Status-BuildFailure"
+                                   label:self.errorStatusLabel
+                                    text:@"2"
+                                   color:[UIColor redColor]];
+    
+    [self updateStatusViewUsingImageView:self.warningStatusImageView
+                              imageNamed:@"Status-BuildWarning"
+                                   label:self.warningStatusLabel
+                                    text:@"2"
+                                   color:[UIColor yellowColor]];
+    
+    [self updateStatusViewUsingImageView:self.staticAnalysisImageView
+                              imageNamed:@"Status-StaticAnalysis"
+                                   label:self.staticAnalysisLabel
+                                    text:@"2"
+                                   color:[UIColor blueColor]];
+    
+    [self updateStatusViewUsingImageView:self.unitTestImageView
+                              imageNamed:@"Status-TestSuccess"
+                                   label:self.unitTestLabel
+                                    text:@"2"
+                                   color:[UIColor colorWithRed:81/255.0 green:250/255.0 blue:0 alpha:1.0]];
+}
+
+- (void)updateStatusViewUsingImageView:(UIImageView *)imageView
+                            imageNamed:(NSString *)imageName
+                                 label:(UILabel *)label
+                                  text:(NSString *)text
+                                 color:(UIColor *)color
+{
+    UIImage *image = [UIImage imageNamed:imageName];
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    
+    imageView.image = image;
+    imageView.tintColor = color;
+    
+    label.text = @"2";
+    label.textColor = color;
+}
 
 - (void)updateIconWithBot:(Bot *)bot
 {
