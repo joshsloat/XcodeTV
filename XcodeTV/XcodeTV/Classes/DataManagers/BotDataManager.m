@@ -65,7 +65,8 @@
                                                       data:data
                                                       error:&serializationError];
                 
-                IntegrationCollection *integrationCollection = [[IntegrationCollection alloc] initWithDictionary:deserializedResponse error:&jsonModelError];
+                IntegrationCollection *integrationCollection = [[IntegrationCollection alloc] initWithDictionary:deserializedResponse
+                                                                                                           error:&jsonModelError];
                 
                 // only care about the most recent for our purposes
                 bot.lastIntegration = integrationCollection.results.firstObject;
@@ -74,6 +75,8 @@
         }
 
         [queue waitUntilAllOperationsAreFinished];
+        
+        [collection sortByEndTime];
         
         if (success)
         {
