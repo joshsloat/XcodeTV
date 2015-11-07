@@ -48,7 +48,9 @@
      __weak typeof(self) weakSelf = self;
     
     // get the bot collection
-    [self.botSessionManager GET:@"api/bots" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject)
+    [self.botSessionManager GET:[XcodeServiceURLs botsEndpoint]
+                     parameters:nil
+                        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject)
     {
         NSError *jsonModelError = nil;
         
@@ -63,7 +65,7 @@
         
         for (Bot *bot in collection.results)
         {
-            NSString *urlString = [NSString stringWithFormat:@"api/bots/%@/integrations", bot.identifier];
+            NSString *urlString = [XcodeServiceURLs integrationsEndpointForBotIdentifier:bot.identifier];
             
             urlString = [[NSURL URLWithString:urlString relativeToURL:self.botSessionManager.baseURL] absoluteString];
             
