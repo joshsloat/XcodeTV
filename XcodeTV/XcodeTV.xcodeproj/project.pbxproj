@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A4734C591BEDE5FC0059F541 /* NSDate+StringFormatting.m in Sources */ = {isa = PBXBuildFile; fileRef = A4734C581BEDE5FC0059F541 /* NSDate+StringFormatting.m */; };
+		A4734C5C1BEE0F900059F541 /* BuildResultSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = A4734C5B1BEE0F900059F541 /* BuildResultSummary.m */; };
 		A47F669A1BECA60A00F6BBFF /* BotCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = A47F66991BECA60A00F6BBFF /* BotCollection.m */; };
 		A47F669D1BECA68A00F6BBFF /* Bot.m in Sources */ = {isa = PBXBuildFile; fileRef = A47F669C1BECA68A00F6BBFF /* Bot.m */; };
 		A47F66A31BED146F00F6BBFF /* TRVSURLSessionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A47F66A21BED146F00F6BBFF /* TRVSURLSessionOperation.m */; };
@@ -71,6 +72,9 @@
 /* Begin PBXFileReference section */
 		A4734C571BEDE5FC0059F541 /* NSDate+StringFormatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+StringFormatting.h"; sourceTree = "<group>"; };
 		A4734C581BEDE5FC0059F541 /* NSDate+StringFormatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+StringFormatting.m"; sourceTree = "<group>"; };
+		A4734C5A1BEE0F900059F541 /* BuildResultSummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuildResultSummary.h; path = Classes/Models/BuildResultSummary.h; sourceTree = "<group>"; };
+		A4734C5B1BEE0F900059F541 /* BuildResultSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuildResultSummary.m; path = Classes/Models/BuildResultSummary.m; sourceTree = "<group>"; };
+		A4734C5E1BEE15BA0059F541 /* JCKeyPathValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCKeyPathValidator.h; sourceTree = "<group>"; };
 		A47F66981BECA60A00F6BBFF /* BotCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BotCollection.h; path = Classes/Models/BotCollection.h; sourceTree = "<group>"; };
 		A47F66991BECA60A00F6BBFF /* BotCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BotCollection.m; path = Classes/Models/BotCollection.m; sourceTree = "<group>"; };
 		A47F669B1BECA68A00F6BBFF /* Bot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bot.h; path = Classes/Models/Bot.h; sourceTree = "<group>"; };
@@ -181,6 +185,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A4734C5D1BEE15BA0059F541 /* JCKeyPathValidator */ = {
+			isa = PBXGroup;
+			children = (
+				A4734C5E1BEE15BA0059F541 /* JCKeyPathValidator.h */,
+			);
+			path = JCKeyPathValidator;
+			sourceTree = "<group>";
+		};
 		A47F66A01BED146F00F6BBFF /* TRVSURLSessionOperation */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +270,8 @@
 				A47F66AB1BED394E00F6BBFF /* Integration.m */,
 				A4F7A8591BEDDAEA00D30E87 /* MaskPosition.h */,
 				A4F7A85A1BEDDAEA00D30E87 /* MaskPosition.m */,
+				A4734C5A1BEE0F900059F541 /* BuildResultSummary.h */,
+				A4734C5B1BEE0F900059F541 /* BuildResultSummary.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -304,6 +318,7 @@
 		A4B9D6CC1BEC889D000F1EEA /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				A4734C5D1BEE15BA0059F541 /* JCKeyPathValidator */,
 				A4F7A8651BEDE5D200D30E87 /* ISO8601DateFormatter */,
 				A47F66A01BED146F00F6BBFF /* TRVSURLSessionOperation */,
 				A4B9C6451BEC8CB0004E7E6C /* AFNetworking */,
@@ -617,6 +632,7 @@
 				A4B9C6541BEC8CB0004E7E6C /* AFNetworkReachabilityManager.m in Sources */,
 				A4F7A8551BEDC60600D30E87 /* IntegrationCollectionViewCell.m in Sources */,
 				A47F66B81BED669800F6BBFF /* Server.m in Sources */,
+				A4734C5C1BEE0F900059F541 /* BuildResultSummary.m in Sources */,
 				A4F7A8501BEDADBA00D30E87 /* ServerVersions.m in Sources */,
 				A4F7A85B1BEDDAEA00D30E87 /* MaskPosition.m in Sources */,
 				A47F66B31BED4F3B00F6BBFF /* UserDefaultsManager.m in Sources */,

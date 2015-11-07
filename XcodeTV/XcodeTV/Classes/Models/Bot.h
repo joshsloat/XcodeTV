@@ -19,4 +19,6 @@
 
 @property (nonatomic, strong) Integration *lastIntegration;
 
+@property (nonatomic, readonly) NSInteger failureCount;
+
 @end

@@ -12,6 +12,9 @@
 @interface BotCollection : JSONModel
 
 @property (nonatomic) NSInteger count;
-@property (nonatomic, strong) NSArray<Bot> *results;
+@property (nonatomic, strong) NSMutableArray<Bot> *results;
+@property (nonatomic, readonly) NSInteger totalFailureCount;
+
+- (void)sortByEndTime;
 
 @end

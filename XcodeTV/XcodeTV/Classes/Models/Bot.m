@@ -11,12 +11,22 @@
 @implementation Bot
 
 NSString * const kRequestIdentifierPropertyName = @"_id";
+NSString * const kIntegrationCounterPropertyName = @"integration_counter";
+
+#pragma mark - Properties
+
+- (NSInteger)failureCount
+{
+    return self.lastIntegration.buildResultSummary.errorCount +
+           self.lastIntegration.buildResultSummary.testFailureCount;
+}
 
 #pragma mark - Overrides
 
 + (NSDictionary *)JSONtoModelMapOverrides
 {
-    return @{ kRequestIdentifierPropertyName : NSStringFromSelector(@selector(identifier)) };
+    return @{ kRequestIdentifierPropertyName : NSStringFromSelector(@selector(identifier)),
+              kIntegrationCounterPropertyName : NSStringFromSelector(@selector(integrationCounter))};
 }
 
 @end

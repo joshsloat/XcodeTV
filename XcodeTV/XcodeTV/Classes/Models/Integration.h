@@ -7,6 +7,7 @@
 //
 
 #import "BaseModel.h"
+#import "BuildResultSummary.h"
 
 @protocol Integration @end
 
@@ -15,5 +16,6 @@
 @property (nonatomic) double duration;
 @property (nonatomic, strong) NSDate *endedTime;
 @property (nonatomic, copy) NSString *result;
+@property (nonatomic, strong) BuildResultSummary *buildResultSummary;
 
 @end
