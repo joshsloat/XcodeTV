@@ -187,6 +187,8 @@
         [weakSelf.botActivityIndicator stopAnimating];
         weakSelf.botCollection = payload;
         [weakSelf.collectionView reloadData];
+        
+        weakSelf.tabBarItem.badgeValue = [NSString stringWithFormat:@"%lu", weakSelf.botCollection.totalFailureCount];
     }
     failure:^(NSDictionary *infoDictionary, NSError *error)
     {

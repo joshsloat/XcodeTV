@@ -49,13 +49,16 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWD-Id-JFF">
                                                     <rect key="frame" x="8" y="193" width="484" height="35"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="29"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="27"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHO-AM-H9p">
                                                     <rect key="frame" x="194" y="19" width="298" height="35"/>
                                                     <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="0Fg-r9-9kV"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -214,12 +217,38 @@
                                                         <constraint firstAttribute="height" constant="90" id="wNx-ux-HLh"/>
                                                     </constraints>
                                                 </stackView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qrk-zk-ozJ">
+                                                    <rect key="frame" x="452" y="-11" width="60" height="60"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8N1-Bd-7jK">
+                                                            <rect key="frame" x="5" y="1" width="50" height="59"/>
+                                                            <animations/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="i4B-Ax-XCJ"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <size key="shadowOffset" width="0.0" height="1"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <animations/>
+                                                    <color key="backgroundColor" red="0.90196084980000002" green="0.35686275360000003" blue="0.20392158630000001" alpha="1" colorSpace="deviceRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="8N1-Bd-7jK" secondAttribute="bottom" id="F8F-T7-PDH"/>
+                                                        <constraint firstAttribute="trailing" secondItem="8N1-Bd-7jK" secondAttribute="trailing" constant="5" id="lSN-zb-MgL"/>
+                                                        <constraint firstItem="8N1-Bd-7jK" firstAttribute="top" secondItem="qrk-zk-ozJ" secondAttribute="top" constant="1" id="pBR-4V-cvW"/>
+                                                        <constraint firstItem="8N1-Bd-7jK" firstAttribute="leading" secondItem="qrk-zk-ozJ" secondAttribute="leading" constant="5" id="zDL-oY-vzV"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <animations/>
                                         <constraints>
+                                            <constraint firstItem="qrk-zk-ozJ" firstAttribute="top" secondItem="ebC-m1-WPc" secondAttribute="topMargin" constant="-19" id="5RU-E0-45v"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="qrk-zk-ozJ" secondAttribute="trailing" constant="-20" id="9A2-P0-DJa"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="oWD-Id-JFF" secondAttribute="bottom" constant="1" id="B6i-Va-rdL"/>
                                             <constraint firstItem="fHO-AM-H9p" firstAttribute="leading" secondItem="e3W-CK-Zkd" secondAttribute="trailing" constant="28" id="Bsr-fM-STZ"/>
                                             <constraint firstItem="oWD-Id-JFF" firstAttribute="leading" secondItem="ebC-m1-WPc" secondAttribute="leadingMargin" id="GKl-FN-qzt"/>
@@ -231,9 +260,12 @@
                                             <constraint firstItem="oWD-Id-JFF" firstAttribute="top" secondItem="0cL-BL-N8j" secondAttribute="bottom" constant="21" id="dIg-iC-gNS"/>
                                             <constraint firstItem="fHO-AM-H9p" firstAttribute="top" secondItem="ebC-m1-WPc" secondAttribute="topMargin" constant="11" id="fB8-6h-Sbq"/>
                                             <constraint firstItem="e3W-CK-Zkd" firstAttribute="leading" secondItem="ebC-m1-WPc" secondAttribute="leadingMargin" constant="8" id="il5-Mp-5Hs"/>
+                                            <constraint firstItem="oWD-Id-JFF" firstAttribute="top" secondItem="qrk-zk-ozJ" secondAttribute="bottom" constant="144" id="yCL-Ov-aEf"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="backgroundImageView" destination="yZF-y8-yjy" id="EIH-PG-G6n"/>
+                                            <outlet property="badgeLabel" destination="8N1-Bd-7jK" id="fiI-a4-iwy"/>
+                                            <outlet property="badgeView" destination="qrk-zk-ozJ" id="7go-ZF-Bn0"/>
                                             <outlet property="botNameLabel" destination="oWD-Id-JFF" id="tT4-7k-MhS"/>
                                             <outlet property="errorStatusBackgroundView" destination="N49-lH-Qyl" id="Rcj-os-YbX"/>
                                             <outlet property="errorStatusImageView" destination="ZwB-n8-GEH" id="J0S-md-CTW"/>

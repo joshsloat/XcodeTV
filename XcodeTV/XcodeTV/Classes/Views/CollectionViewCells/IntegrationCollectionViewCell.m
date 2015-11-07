@@ -27,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UIView *unitTestBackgroundView;
 @property (weak, nonatomic) IBOutlet UIImageView *unitTestImageView;
 @property (weak, nonatomic) IBOutlet UILabel *unitTestLabel;
+@property (weak, nonatomic) IBOutlet UIView *badgeView;
+@property (weak, nonatomic) IBOutlet UILabel *badgeLabel;
 
 @end
 
@@ -40,6 +42,9 @@
     
     self.backgroundImageView.clipsToBounds = YES;
     self.backgroundImageView.layer.cornerRadius = 15;
+    
+    self.badgeView.backgroundColor = [UIColor colorWithRed:1.0 green:59/255.0 blue:48/255.0 alpha:1.0];
+    self.badgeView.layer.cornerRadius = self.badgeView.bounds.size.width / 2.0f;
 }
 
 #pragma mark - Public Methods
@@ -53,51 +58,91 @@
 
 - (void)updateWithBot:(Bot *)bot
 {
-    self.botNameLabel.text = [bot.name stringByReplacingOccurrencesOfString:@"(Prod)" withString:@""];
+    NSString *buildTitle = [bot.name stringByReplacingOccurrencesOfString:@"(Prod)" withString:@""];
     
-#warning - ends up being negative if build is in progress
+    buildTitle = [NSString stringWithFormat:@"%@ (%ld)", buildTitle, bot.integrationCounter - 1];
+    
+    self.botNameLabel.text = buildTitle;
+    
     self.timeLabel.text = [bot.lastIntegration.endedTime relativeDateStringFromNow];
     
     [self updateIconWithBot:bot];
     
     [self updateStatusWithBot:bot];
     
+    [self updateBadgeViewWithBot:bot];
 }
 
 #pragma mark - Private Methods
-
 
 - (void)updateStatusWithBot:(Bot *)bot
 {
     [self updateStatusViewUsingImageView:self.errorStatusImageView
                               imageNamed:@"Status-BuildFailure"
                                    label:self.errorStatusLabel
-                                    text:@"2"
+                                   count:bot.lastIntegration.buildResultSummary.errorCount
                                    color:[UIColor redColor]];
     
     [self updateStatusViewUsingImageView:self.warningStatusImageView
                               imageNamed:@"Status-BuildWarning"
                                    label:self.warningStatusLabel
-                                    text:@"2"
+                                    count:bot.lastIntegration.buildResultSummary.warningCount
                                    color:[UIColor yellowColor]];
     
     [self updateStatusViewUsingImageView:self.staticAnalysisImageView
                               imageNamed:@"Status-StaticAnalysis"
                                    label:self.staticAnalysisLabel
-                                    text:@"2"
+                                    count:bot.lastIntegration.buildResultSummary.analyzerWarningCount
                                    color:[UIColor blueColor]];
     
-    [self updateStatusViewUsingImageView:self.unitTestImageView
-                              imageNamed:@"Status-TestSuccess"
-                                   label:self.unitTestLabel
-                                    text:@"2"
-                                   color:[UIColor colorWithRed:81/255.0 green:250/255.0 blue:0 alpha:1.0]];
+    if (bot.lastIntegration.buildResultSummary.testFailureCount > 0)
+    {
+        [self updateStatusViewUsingImageView:self.unitTestImageView
+                                  imageNamed:@"Status-TestFailure"
+                                       label:self.unitTestLabel
+                                       count:bot.lastIntegration.buildResultSummary.testFailureCount
+                                       color:[UIColor redColor]];
+    }
+    else
+    {
+        [self updateStatusViewUsingImageView:self.unitTestImageView
+                                  imageNamed:@"Status-TestSuccess"
+                                       label:self.unitTestLabel
+                                        count:bot.lastIntegration.buildResultSummary.testsCount
+                                       color:[UIColor colorWithRed:81/255.0 green:250/255.0 blue:0 alpha:1.0]];
+    }
+    
+    if ([bot.name containsString:@"Daily"])
+    {
+        self.staticAnalysisBackgroundView.hidden = YES;
+        self.unitTestBackgroundView.hidden = YES;
+    }
+}
+
+- (void)updateBadgeViewWithBot:(Bot *)bot
+{
+    self.badgeView.hidden = bot.failureCount == 0;
+    
+    NSString *failureString = [NSString stringWithFormat:@"%lu", bot.failureCount];
+    
+    self.badgeLabel.text = failureString;
+
+    [self.badgeView.superview layoutIfNeeded];
+
+    if (failureString.length > 1)
+    {
+        self.badgeView.layer.cornerRadius = 20;
+    }
+    else
+    {
+        self.badgeView.layer.cornerRadius = self.badgeView.bounds.size.width / 2.0f;
+    }
 }
 
 - (void)updateStatusViewUsingImageView:(UIImageView *)imageView
                             imageNamed:(NSString *)imageName
                                  label:(UILabel *)label
-                                  text:(NSString *)text
+                                  count:(NSInteger)count
                                  color:(UIColor *)color
 {
     UIImage *image = [UIImage imageNamed:imageName];
@@ -106,7 +151,7 @@
     imageView.image = image;
     imageView.tintColor = color;
     
-    label.text = @"2";
+    label.text = [NSString stringWithFormat:@"%lu", count];
     label.textColor = color;
 }
 
