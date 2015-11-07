@@ -92,4 +92,22 @@
     }];
 }
 
+- (void)triggeBuildForBot:(Bot *)bot
+              withSuccess:(BotDataManagerSuccessBlock)success
+                  failure:(BotDataManagerFailureBlock)failure
+{
+    NSString *urlString = [XcodeServiceURLs integrationsEndpointForBotIdentifier:bot.identifier];
+    
+    [[XcodeServerSessionManager sharedManager] POST:urlString
+                                         parameters:nil
+                                            success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject)
+    {
+        NSLog(@"success");
+    }
+    failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
+    {
+        NSLog(@"failure");
+    }];
+}
+
 @end

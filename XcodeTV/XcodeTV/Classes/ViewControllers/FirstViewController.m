@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *botActivityIndicator;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
+@property (nonatomic, strong) BotDataManager *botDataManager;
 @property (nonatomic, strong) BotCollection *botCollection;
 
 @end
@@ -42,6 +43,7 @@
     [super viewDidLoad];
     
     [self configureCollectionView];
+    [self configurePlayButtonGesture];
     
     if ([ServerDataManager isServerConfigured])
     {
@@ -66,6 +68,18 @@
                                 self.collectionView.bounds.size.height);
 }
 
+#pragma mark - Properties
+
+- (BotDataManager *)botDataManager
+{
+    if (!_botDataManager)
+    {
+        _botDataManager = [BotDataManager new];
+    }
+    
+    return _botDataManager;
+}
+
 #pragma mark - Configuration
 
 - (void)configureCollectionView
@@ -73,6 +87,15 @@
     self.collectionView.maskView = [[GradientMaskView alloc] initWithFrame:CGRectMake(CGPointZero.x, CGPointZero.y,
                                                                                      self.collectionView.bounds.size.width,
                                                                                       self.collectionView.bounds.size.height)];
+}
+
+- (void)configurePlayButtonGesture
+{
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                        action:@selector(tappedPlayPauseButton:)];
+    gestureRecognizer.allowedPressTypes = @[[NSNumber numberWithInt:UIPressTypePlayPause]];
+    
+    [self.view addGestureRecognizer:gestureRecognizer];
 }
 
 #pragma mark - Authentication
@@ -180,9 +203,7 @@
         NSLog(@"");
     }];
     
-    BotDataManager *botDataManager = [BotDataManager new];
-    
-    [botDataManager getBotsWithSuccess:^(NSDictionary *infoDictionary, id payload)
+    [self.botDataManager getBotsWithSuccess:^(NSDictionary *infoDictionary, id payload)
     {
         [weakSelf.botActivityIndicator stopAnimating];
         weakSelf.botCollection = payload;
@@ -208,6 +229,30 @@
     [self showLoginView];
 }
 
+- (void)tappedPlayPauseButton:(id)sender
+{
+    NSArray *selectedIndexPaths = [self.collectionView indexPathsForSelectedItems];
+    
+    NSIndexPath *path = selectedIndexPaths.firstObject;
+    
+    NSInteger index = [path indexAtPosition:1];
+    
+    Bot *bot = self.botCollection.results[index];
+    
+    NSLog(@"%@", bot.name);
+    
+    [self.botDataManager triggeBuildForBot:bot withSuccess:^(NSDictionary *infoDictionary, id payload)
+    {
+#warning - need to start updating cell with build progress
+        NSLog(@"");
+    }
+    failure:^(NSDictionary *infoDictionary, NSError *error)
+    {
+        NSLog(@"fail");
+    }];
+
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -225,6 +270,14 @@
 }
 
 #pragma mark - UICollectionViewDelegate
+
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldUpdateFocusInContext:(UICollectionViewFocusUpdateContext *)context
+{
+    // let focus perform selection
+    [collectionView selectItemAtIndexPath:context.nextFocusedIndexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+    
+    return YES;
+}
 
 - (void)collectionView:(UICollectionView *)collectionView
        willDisplayCell:(UICollectionViewCell *)cell

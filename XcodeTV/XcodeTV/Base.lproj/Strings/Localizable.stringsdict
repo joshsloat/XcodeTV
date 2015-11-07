@@ -20,7 +20,7 @@
                 <key>NSStringFormatValueTypeKey</key>
                 <string>d</string>
                 <key>zero</key>
-                <string>Less than a minute ago</string>
+                <string>Moments ago</string>
                 <key>one</key>
                 <string>%d minute ago</string>
                 <key>other</key>

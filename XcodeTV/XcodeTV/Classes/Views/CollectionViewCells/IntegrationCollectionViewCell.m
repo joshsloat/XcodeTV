@@ -43,6 +43,8 @@
     self.backgroundImageView.clipsToBounds = YES;
     self.backgroundImageView.layer.cornerRadius = 15;
     
+    //self.backgroundImageView.adjustsImageWhenAncestorFocused = YES;
+    
     self.badgeView.backgroundColor = [UIColor colorWithRed:1.0 green:59/255.0 blue:48/255.0 alpha:1.0];
     self.badgeView.layer.cornerRadius = self.badgeView.bounds.size.width / 2.0f;
 }

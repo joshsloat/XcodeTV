@@ -17,4 +17,8 @@ typedef void(^BotDataManagerFailureBlock)(NSDictionary *infoDictionary, NSError 
 - (void)getBotsWithSuccess:(BotDataManagerSuccessBlock)success
                    failure:(BotDataManagerFailureBlock)failure;
 
+- (void)triggeBuildForBot:(Bot *)bot
+              withSuccess:(BotDataManagerSuccessBlock)success
+                  failure:(BotDataManagerFailureBlock)failure;
+
 @end
