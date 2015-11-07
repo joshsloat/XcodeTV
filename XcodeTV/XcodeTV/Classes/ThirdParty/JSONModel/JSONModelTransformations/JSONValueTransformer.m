@@ -15,6 +15,7 @@
 // The MIT License in plain English: http://www.touch-code-magazine.com/JSONModel/MITLicense
 
 #import "JSONValueTransformer.h"
+#import "NSDate+StringFormatting.h"
 
 #pragma mark - functions
 extern BOOL isNull(id value)
@@ -164,10 +165,7 @@ extern BOOL isNull(id value)
 #pragma mark - string <-> date
 -(NSDate*)NSDateFromNSString:(NSString*)string
 {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
-    
-    return [dateFormatter dateFromString: string];
+    return [NSDate dateFromISO8601String:string];
 }
 
 -(NSString*)JSONObjectFromNSDate:(NSDate*)date

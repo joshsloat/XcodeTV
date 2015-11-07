@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4734C591BEDE5FC0059F541 /* NSDate+StringFormatting.m in Sources */ = {isa = PBXBuildFile; fileRef = A4734C581BEDE5FC0059F541 /* NSDate+StringFormatting.m */; };
 		A47F669A1BECA60A00F6BBFF /* BotCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = A47F66991BECA60A00F6BBFF /* BotCollection.m */; };
 		A47F669D1BECA68A00F6BBFF /* Bot.m in Sources */ = {isa = PBXBuildFile; fileRef = A47F669C1BECA68A00F6BBFF /* Bot.m */; };
 		A47F66A31BED146F00F6BBFF /* TRVSURLSessionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A47F66A21BED146F00F6BBFF /* TRVSURLSessionOperation.m */; };
@@ -41,6 +42,13 @@
 		A4F652B61BEC5D35008F0B14 /* XcodeTVTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F652B51BEC5D35008F0B14 /* XcodeTVTests.m */; };
 		A4F652C11BEC5D35008F0B14 /* XcodeTVUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F652C01BEC5D35008F0B14 /* XcodeTVUITests.m */; };
 		A4F7A8501BEDADBA00D30E87 /* ServerVersions.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F7A84F1BEDADBA00D30E87 /* ServerVersions.m */; };
+		A4F7A8551BEDC60600D30E87 /* IntegrationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F7A8541BEDC60600D30E87 /* IntegrationCollectionViewCell.m */; };
+		A4F7A8581BEDDA4600D30E87 /* GradientMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F7A8571BEDDA4600D30E87 /* GradientMaskView.m */; };
+		A4F7A85B1BEDDAEA00D30E87 /* MaskPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F7A85A1BEDDAEA00D30E87 /* MaskPosition.m */; };
+		A4F7A85F1BEDE14800D30E87 /* NSDate+RelativeDateString.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F7A85E1BEDE14800D30E87 /* NSDate+RelativeDateString.m */; };
+		A4F7A8631BEDE27700D30E87 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4F7A8611BEDE27700D30E87 /* Localizable.strings */; };
+		A4F7A8641BEDE27700D30E87 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = A4F7A8621BEDE27700D30E87 /* Localizable.stringsdict */; };
+		A4F7A8681BEDE5D200D30E87 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F7A8671BEDE5D200D30E87 /* ISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +69,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A4734C571BEDE5FC0059F541 /* NSDate+StringFormatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+StringFormatting.h"; sourceTree = "<group>"; };
+		A4734C581BEDE5FC0059F541 /* NSDate+StringFormatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+StringFormatting.m"; sourceTree = "<group>"; };
 		A47F66981BECA60A00F6BBFF /* BotCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BotCollection.h; path = Classes/Models/BotCollection.h; sourceTree = "<group>"; };
 		A47F66991BECA60A00F6BBFF /* BotCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BotCollection.m; path = Classes/Models/BotCollection.m; sourceTree = "<group>"; };
 		A47F669B1BECA68A00F6BBFF /* Bot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bot.h; path = Classes/Models/Bot.h; sourceTree = "<group>"; };
@@ -132,6 +142,18 @@
 		A4F652C21BEC5D35008F0B14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4F7A84E1BEDADBA00D30E87 /* ServerVersions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerVersions.h; path = Classes/Models/ServerVersions.h; sourceTree = "<group>"; };
 		A4F7A84F1BEDADBA00D30E87 /* ServerVersions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerVersions.m; path = Classes/Models/ServerVersions.m; sourceTree = "<group>"; };
+		A4F7A8531BEDC60600D30E87 /* IntegrationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IntegrationCollectionViewCell.h; path = Classes/Views/CollectionViewCells/IntegrationCollectionViewCell.h; sourceTree = "<group>"; };
+		A4F7A8541BEDC60600D30E87 /* IntegrationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IntegrationCollectionViewCell.m; path = Classes/Views/CollectionViewCells/IntegrationCollectionViewCell.m; sourceTree = "<group>"; };
+		A4F7A8561BEDDA4600D30E87 /* GradientMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GradientMaskView.h; path = Classes/Views/GradientMaskView.h; sourceTree = "<group>"; };
+		A4F7A8571BEDDA4600D30E87 /* GradientMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GradientMaskView.m; path = Classes/Views/GradientMaskView.m; sourceTree = "<group>"; };
+		A4F7A8591BEDDAEA00D30E87 /* MaskPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaskPosition.h; path = Classes/Models/MaskPosition.h; sourceTree = "<group>"; };
+		A4F7A85A1BEDDAEA00D30E87 /* MaskPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MaskPosition.m; path = Classes/Models/MaskPosition.m; sourceTree = "<group>"; };
+		A4F7A85D1BEDE14800D30E87 /* NSDate+RelativeDateString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RelativeDateString.h"; sourceTree = "<group>"; };
+		A4F7A85E1BEDE14800D30E87 /* NSDate+RelativeDateString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+RelativeDateString.m"; sourceTree = "<group>"; };
+		A4F7A8611BEDE27700D30E87 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		A4F7A8621BEDE27700D30E87 /* Localizable.stringsdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
+		A4F7A8661BEDE5D200D30E87 /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISO8601DateFormatter.h; sourceTree = "<group>"; };
+		A4F7A8671BEDE5D200D30E87 /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +256,8 @@
 				A47F66A81BED393500F6BBFF /* IntegrationCollection.m */,
 				A47F66AA1BED394E00F6BBFF /* Integration.h */,
 				A47F66AB1BED394E00F6BBFF /* Integration.m */,
+				A4F7A8591BEDDAEA00D30E87 /* MaskPosition.h */,
+				A4F7A85A1BEDDAEA00D30E87 /* MaskPosition.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -252,12 +276,14 @@
 			children = (
 				A4B9D6CA1BEC889D000F1EEA /* AppDelegate.h */,
 				A4B9D6CB1BEC889D000F1EEA /* AppDelegate.m */,
+				A4F7A85C1BEDE14800D30E87 /* Categories */,
 				A4B9C6661BEC949D004E7E6C /* Utilities */,
 				A4B9C65B1BEC8D29004E7E6C /* Models */,
 				A4B9C65A1BEC8D21004E7E6C /* Networking */,
 				A47F66B01BED4EF600F6BBFF /* Managers */,
 				A4B9C6591BEC8D17004E7E6C /* DataManagers */,
 				A4B9D6CC1BEC889D000F1EEA /* ThirdParty */,
+				A4F7A8511BEDC5C200D30E87 /* Views */,
 				A4B9D6C51BEC889D000F1EEA /* ViewControllers */,
 			);
 			name = Classes;
@@ -278,6 +304,7 @@
 		A4B9D6CC1BEC889D000F1EEA /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				A4F7A8651BEDE5D200D30E87 /* ISO8601DateFormatter */,
 				A47F66A01BED146F00F6BBFF /* TRVSURLSessionOperation */,
 				A4B9C6451BEC8CB0004E7E6C /* AFNetworking */,
 				A4B9D6F91BEC889D000F1EEA /* JSONModel */,
@@ -335,6 +362,7 @@
 		A4B9D7291BEC88AB000F1EEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A4F7A8601BEDE27700D30E87 /* Strings */,
 				A47F66B41BED61ED00F6BBFF /* Assets.xcassets */,
 				A4F652A71BEC5D35008F0B14 /* Main.storyboard */,
 			);
@@ -396,6 +424,56 @@
 				A4F652C21BEC5D35008F0B14 /* Info.plist */,
 			);
 			path = XcodeTVUITests;
+			sourceTree = "<group>";
+		};
+		A4F7A8511BEDC5C200D30E87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A4F7A8521BEDC5C900D30E87 /* CollectionViewCells */,
+				A4F7A8561BEDDA4600D30E87 /* GradientMaskView.h */,
+				A4F7A8571BEDDA4600D30E87 /* GradientMaskView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		A4F7A8521BEDC5C900D30E87 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				A4F7A8531BEDC60600D30E87 /* IntegrationCollectionViewCell.h */,
+				A4F7A8541BEDC60600D30E87 /* IntegrationCollectionViewCell.m */,
+			);
+			name = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		A4F7A85C1BEDE14800D30E87 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A4734C571BEDE5FC0059F541 /* NSDate+StringFormatting.h */,
+				A4734C581BEDE5FC0059F541 /* NSDate+StringFormatting.m */,
+				A4F7A85D1BEDE14800D30E87 /* NSDate+RelativeDateString.h */,
+				A4F7A85E1BEDE14800D30E87 /* NSDate+RelativeDateString.m */,
+			);
+			name = Categories;
+			path = Classes/Categories;
+			sourceTree = "<group>";
+		};
+		A4F7A8601BEDE27700D30E87 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				A4F7A8611BEDE27700D30E87 /* Localizable.strings */,
+				A4F7A8621BEDE27700D30E87 /* Localizable.stringsdict */,
+			);
+			name = Strings;
+			path = Base.lproj/Strings;
+			sourceTree = "<group>";
+		};
+		A4F7A8651BEDE5D200D30E87 /* ISO8601DateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				A4F7A8661BEDE5D200D30E87 /* ISO8601DateFormatter.h */,
+				A4F7A8671BEDE5D200D30E87 /* ISO8601DateFormatter.m */,
+			);
+			path = ISO8601DateFormatter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -503,6 +581,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A47F66B51BED61ED00F6BBFF /* Assets.xcassets in Resources */,
+				A4F7A8641BEDE27700D30E87 /* Localizable.stringsdict in Resources */,
+				A4F7A8631BEDE27700D30E87 /* Localizable.strings in Resources */,
 				A4F652A91BEC5D35008F0B14 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,12 +610,15 @@
 			files = (
 				A4B9C6581BEC8CB0004E7E6C /* AFURLSessionManager.m in Sources */,
 				A47F66A91BED393500F6BBFF /* IntegrationCollection.m in Sources */,
+				A4F7A8581BEDDA4600D30E87 /* GradientMaskView.m in Sources */,
 				A4B9C6551BEC8CB0004E7E6C /* AFSecurityPolicy.m in Sources */,
 				A4B9D70E1BEC889D000F1EEA /* AppDelegate.m in Sources */,
 				A47F669A1BECA60A00F6BBFF /* BotCollection.m in Sources */,
 				A4B9C6541BEC8CB0004E7E6C /* AFNetworkReachabilityManager.m in Sources */,
+				A4F7A8551BEDC60600D30E87 /* IntegrationCollectionViewCell.m in Sources */,
 				A47F66B81BED669800F6BBFF /* Server.m in Sources */,
 				A4F7A8501BEDADBA00D30E87 /* ServerVersions.m in Sources */,
+				A4F7A85B1BEDDAEA00D30E87 /* MaskPosition.m in Sources */,
 				A47F66B31BED4F3B00F6BBFF /* UserDefaultsManager.m in Sources */,
 				A47F66AC1BED394E00F6BBFF /* Integration.m in Sources */,
 				A4B9D70D1BEC889D000F1EEA /* SecondViewController.m in Sources */,
@@ -545,7 +628,9 @@
 				A47F66A61BED159300F6BBFF /* BaseModel.m in Sources */,
 				A4B9D7261BEC889D000F1EEA /* NSArray+JSONModel.m in Sources */,
 				A4B9D7221BEC889D000F1EEA /* JSONModel.m in Sources */,
+				A4734C591BEDE5FC0059F541 /* NSDate+StringFormatting.m in Sources */,
 				A4F6529D1BEC5D35008F0B14 /* main.m in Sources */,
+				A4F7A85F1BEDE14800D30E87 /* NSDate+RelativeDateString.m in Sources */,
 				A47F669D1BECA68A00F6BBFF /* Bot.m in Sources */,
 				A4B9C6651BEC9244004E7E6C /* XcodeServerSessionManager.m in Sources */,
 				A4B9D7241BEC889D000F1EEA /* JSONModelClassProperty.m in Sources */,
@@ -558,6 +643,7 @@
 				A4B9C6571BEC8CB0004E7E6C /* AFURLResponseSerialization.m in Sources */,
 				A4B9D7231BEC889D000F1EEA /* JSONModelArray.m in Sources */,
 				A4B9C65E1BEC8D5F004E7E6C /* BotDataManager.m in Sources */,
+				A4F7A8681BEDE5D200D30E87 /* ISO8601DateFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
