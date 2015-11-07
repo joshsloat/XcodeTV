@@ -10,8 +10,10 @@
 #import "AFNetworking.h"
 #import "BotDataManager.h"
 #import "ServerDataManager.h"
+#import "IntegrationCollectionViewCell.h"
+#import "GradientMaskView.h"
 
-@interface FirstViewController ()
+@interface FirstViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, strong) UIAlertAction *passwordAlertAction;
 
@@ -24,6 +26,10 @@
 @property (nonatomic, weak) IBOutlet UILabel *osServerVersionLabel;
 @property (nonatomic, weak) IBOutlet UILabel *xcodeVersionLabel;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *serverActivityIndicator;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *botActivityIndicator;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (nonatomic, strong) BotCollection *botCollection;
 
 @end
 
@@ -35,10 +41,38 @@
 {
     [super viewDidLoad];
     
+    [self configureCollectionView];
+    
     if ([ServerDataManager isServerConfigured])
     {
         [self getBots];
     }
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    GradientMaskView *maskView = (GradientMaskView *)self.collectionView.maskView;
+    
+    maskView.maskPosition.end = self.topLayoutGuide.length * 0.8;
+    
+    CGFloat maximumMaskStart = maskView.maskPosition.end + (self.topLayoutGuide.length * 0.5);
+    CGFloat verticalScrollPosition = MAX(0, self.collectionView.contentOffset.y + self.collectionView.contentInset.top);
+    maskView.maskPosition.start = MIN(maximumMaskStart, maskView.maskPosition.end + verticalScrollPosition);
+    
+    maskView.frame = CGRectMake(0, self.collectionView.contentOffset.x,
+                                self.collectionView.bounds.size.width,
+                                self.collectionView.bounds.size.height);
+}
+
+#pragma mark - Configuration
+
+- (void)configureCollectionView
+{
+    self.collectionView.maskView = [[GradientMaskView alloc] initWithFrame:CGRectMake(CGPointZero.x, CGPointZero.y,
+                                                                                     self.collectionView.bounds.size.width,
+                                                                                      self.collectionView.bounds.size.height)];
 }
 
 #pragma mark - Authentication
@@ -150,7 +184,9 @@
     
     [botDataManager getBotsWithSuccess:^(NSDictionary *infoDictionary, id payload)
     {
-        NSLog(@"");
+        [weakSelf.botActivityIndicator stopAnimating];
+        weakSelf.botCollection = payload;
+        [weakSelf.collectionView reloadData];
     }
     failure:^(NSDictionary *infoDictionary, NSError *error)
     {
@@ -168,6 +204,32 @@
 - (IBAction)didSelectAdd:(id)sender
 {
     [self showLoginView];
+}
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    NSLog(@"%lu", self.botCollection.results.count);
+    return self.botCollection.results.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[IntegrationCollectionViewCell reuseIdentifier]
+                                                                           forIndexPath:indexPath];
+    
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView
+       willDisplayCell:(UICollectionViewCell *)cell
+    forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [(IntegrationCollectionViewCell *)cell updateWithBot:self.botCollection.results[indexPath.row]];
 }
 
 @end

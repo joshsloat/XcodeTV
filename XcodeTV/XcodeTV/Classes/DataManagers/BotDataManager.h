@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BotCollection.h"
 
 typedef void(^BotDataManagerSuccessBlock)(NSDictionary *infoDictionary, id payload);
 typedef void(^BotDataManagerFailureBlock)(NSDictionary *infoDictionary, NSError *error);
