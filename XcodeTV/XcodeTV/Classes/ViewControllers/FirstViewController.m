@@ -13,6 +13,9 @@
 #import "IntegrationCollectionViewCell.h"
 #import "GradientMaskView.h"
 
+#define STANDARD_REFRESH 60
+#define ACTIVE_BUILD_REFRESH 3
+
 @interface FirstViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, strong) UIAlertAction *passwordAlertAction;
@@ -32,9 +35,18 @@
 @property (nonatomic, strong) BotDataManager *botDataManager;
 @property (nonatomic, strong) BotCollection *botCollection;
 
+@property (nonatomic, strong) NSTimer *refreshTimer;
+
 @end
 
 @implementation FirstViewController
+
+#pragma mark - Init / Dealloc
+
+- (void)dealloc
+{
+    [self invalidateRefreshTimer];
+}
 
 #pragma mark - View Lifecycle
 
@@ -47,6 +59,7 @@
     
     if ([ServerDataManager isServerConfigured])
     {
+        [self getServerVersions];
         [self getBots];
     }
 }
@@ -180,7 +193,7 @@
 
 #pragma mark - Data Methods
 
-- (void)getBots
+- (void)getServerVersions
 {
     __weak typeof(self) weakSelf = self;
     
@@ -202,6 +215,15 @@
     {
         NSLog(@"");
     }];
+}
+
+- (void)getBots
+{
+    __weak typeof(self) weakSelf = self;
+    
+    [self invalidateRefreshTimer];
+    
+    NSIndexPath *selectedIndexPath = [self indexPathForSelecteItem];
     
     [self.botDataManager getBotsWithSuccess:^(NSDictionary *infoDictionary, id payload)
     {
@@ -210,10 +232,19 @@
         [weakSelf.collectionView reloadData];
         
         weakSelf.tabBarItem.badgeValue = [NSString stringWithFormat:@"%lu", weakSelf.botCollection.totalFailureCount];
+        
+        if (selectedIndexPath)
+        {
+            [weakSelf.collectionView selectItemAtIndexPath:selectedIndexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+        }
+        
+        [weakSelf setupRefreshTimer];
+        
     }
     failure:^(NSDictionary *infoDictionary, NSError *error)
     {
         NSLog(@"");
+        //[weakSelf setupRefreshTimer];
     }];
 }
 
@@ -231,26 +262,47 @@
 
 - (void)tappedPlayPauseButton:(id)sender
 {
-    NSArray *selectedIndexPaths = [self.collectionView indexPathsForSelectedItems];
+    [self invalidateRefreshTimer];
     
-    NSIndexPath *path = selectedIndexPaths.firstObject;
-    
-    NSInteger index = [path indexAtPosition:1];
+    NSInteger index = [self indexOfSelectedItem];
     
     Bot *bot = self.botCollection.results[index];
     
-    NSLog(@"%@", bot.name);
+    __weak typeof(self) weakSelf = self;
+    
+    NSIndexPath *selectedIndexPath = [self indexPathForSelecteItem];
+    [self.collectionView deselectItemAtIndexPath:selectedIndexPath animated:YES];
     
     [self.botDataManager triggeBuildForBot:bot withSuccess:^(NSDictionary *infoDictionary, id payload)
     {
-#warning - need to start updating cell with build progress
-        NSLog(@"");
+        [weakSelf.collectionView reloadItemsAtIndexPaths:@[selectedIndexPath]];
+        
+        [weakSelf.collectionView selectItemAtIndexPath:selectedIndexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+        
+        [weakSelf setupRefreshTimer];
     }
     failure:^(NSDictionary *infoDictionary, NSError *error)
     {
         NSLog(@"fail");
     }];
+}
 
+- (NSInteger)indexOfSelectedItem
+{
+    NSIndexPath *path = [self indexPathForSelecteItem];
+    
+    NSInteger index = [path indexAtPosition:1];
+    
+    return index;
+}
+
+- (NSIndexPath *)indexPathForSelecteItem
+{
+    NSArray *selectedIndexPaths = [self.collectionView indexPathsForSelectedItems];
+    
+    NSIndexPath *path = selectedIndexPaths.firstObject;
+    
+    return path;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -284,6 +336,41 @@
     forItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [(IntegrationCollectionViewCell *)cell updateWithBot:self.botCollection.results[indexPath.row]];
+}
+
+#pragma mark - Refresh Timer
+
+- (void)invalidateRefreshTimer
+{
+    if (self.refreshTimer.isValid)
+    {
+        [self.refreshTimer invalidate];
+    }
+    
+    self.refreshTimer = nil;
+}
+
+- (void)setupRefreshTimer
+{
+    if (self.botCollection.hasActiveBuilds)
+    {
+        [self setupRefreshTimerWithInterval:ACTIVE_BUILD_REFRESH];
+    }
+    else
+    {
+        [self setupRefreshTimerWithInterval:STANDARD_REFRESH];
+    }
+}
+
+- (void)setupRefreshTimerWithInterval:(NSTimeInterval)interval
+{
+    [self invalidateRefreshTimer];
+
+    self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:interval
+                                                         target:self
+                                                       selector:@selector(getBots)
+                                                       userInfo:nil
+                                                        repeats:NO];
 }
 
 @end

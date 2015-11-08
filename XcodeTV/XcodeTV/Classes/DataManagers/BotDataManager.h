@@ -21,4 +21,8 @@ typedef void(^BotDataManagerFailureBlock)(NSDictionary *infoDictionary, NSError 
               withSuccess:(BotDataManagerSuccessBlock)success
                   failure:(BotDataManagerFailureBlock)failure;
 
+- (void)getLastIntegrationForBot:(Bot *)bot
+                     withSuccess:(BotDataManagerSuccessBlock)success
+                         failure:(BotDataManagerFailureBlock)failure;
+
 @end

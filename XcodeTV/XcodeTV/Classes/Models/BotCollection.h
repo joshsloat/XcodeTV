@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSMutableArray<Bot> *results;
 @property (nonatomic, readonly) NSInteger totalFailureCount;
 
-- (void)sortByEndTime;
+- (BOOL)hasActiveBuilds;
+- (void)sortByQueuedDate;
 
 @end

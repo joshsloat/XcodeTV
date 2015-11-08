@@ -24,11 +24,20 @@
     return sum.integerValue;
 }
 
+- (BOOL)hasActiveBuilds
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isLastIntegrationComplete == NO"];
+    
+    BOOL hasActiveBuilds = [self.results filteredArrayUsingPredicate:predicate].count > 0;
+    
+    return hasActiveBuilds;
+}
+
 #pragma mark - Public Methods
 
-- (void)sortByEndTime
+- (void)sortByQueuedDate
 {    
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:JCValidateKeyPathWithClass(Bot, lastIntegration.endedTime)
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:JCValidateKeyPathWithClass(Bot, lastIntegration.queuedDate)
                                                                      ascending:NO];
     
     [self.results sortUsingDescriptors:@[sortDescriptor]];

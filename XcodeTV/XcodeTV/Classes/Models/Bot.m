@@ -21,6 +21,12 @@ NSString * const kIntegrationCounterPropertyName = @"integration_counter";
            self.lastIntegration.buildResultSummary.testFailureCount;
 }
 
+- (BOOL)isLastIntegrationComplete
+{
+    // TODO: consider moving the steps into an enum
+    return [self.lastIntegration.currentStep isEqualToString:@"completed"];
+}
+
 #pragma mark - Overrides
 
 + (NSDictionary *)JSONtoModelMapOverrides

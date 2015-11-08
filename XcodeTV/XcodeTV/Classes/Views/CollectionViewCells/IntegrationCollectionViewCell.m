@@ -5,6 +5,13 @@
 //  Created by Josh Sloat on 11/7/15.
 //  Copyright © 2015 Articulate. All rights reserved.
 //
+//  TODO:
+//      [ ] Hiding status container views causes constraint issues on refresh
+//      [ ] Not currently reporting failed status for cancelled builds
+//      [ ] If a cell is focused when a refresh happens, the image flickers - ideally
+//           would like a better solution so we can refresh more frequently to check for
+//           triggered builds, completed builds, new bots, etc.
+//
 
 #import "IntegrationCollectionViewCell.h"
 #import "NSDate+RelativeDateString.h"
@@ -29,6 +36,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *unitTestLabel;
 @property (weak, nonatomic) IBOutlet UIView *badgeView;
 @property (weak, nonatomic) IBOutlet UILabel *badgeLabel;
+@property (weak, nonatomic) IBOutlet UIStackView *stackView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UILabel *activityLabel;
 
 @end
 
@@ -42,8 +52,6 @@
     
     self.backgroundImageView.clipsToBounds = YES;
     self.backgroundImageView.layer.cornerRadius = 15;
-    
-    //self.backgroundImageView.adjustsImageWhenAncestorFocused = YES;
     
     self.badgeView.backgroundColor = [UIColor colorWithRed:1.0 green:59/255.0 blue:48/255.0 alpha:1.0];
     self.badgeView.layer.cornerRadius = self.badgeView.bounds.size.width / 2.0f;
@@ -62,20 +70,57 @@
 {
     NSString *buildTitle = [bot.name stringByReplacingOccurrencesOfString:@"(Prod)" withString:@""];
     
-    buildTitle = [NSString stringWithFormat:@"%@ (%ld)", buildTitle, bot.integrationCounter - 1];
+    buildTitle = [NSString stringWithFormat:@"%@ (%ld)", buildTitle, bot.lastIntegration.number];
     
     self.botNameLabel.text = buildTitle;
     
-    self.timeLabel.text = [bot.lastIntegration.endedTime relativeDateStringFromNow];
-    
     [self updateIconWithBot:bot];
     
-    [self updateStatusWithBot:bot];
-    
     [self updateBadgeViewWithBot:bot];
+
+    if (bot.isLastIntegrationComplete)
+    {
+        [self updateForCompletedIntegrationWithBot:bot];
+    }
+    else
+    {
+        // TODO: auto layout is not happy about this
+        [self updateForInProgressIntegrationWithBot:bot];
+    }
 }
 
 #pragma mark - Private Methods
+
+- (void)updateForCompletedIntegrationWithBot:(Bot *)bot
+{
+    self.botNameLabel.textColor = [UIColor whiteColor];
+    self.iconImageView.adjustsImageWhenAncestorFocused = YES;
+    
+    self.timeLabel.hidden = NO;
+    self.stackView.hidden = NO;
+    self.activityLabel.hidden = YES;
+    
+    self.timeLabel.text = [bot.lastIntegration.endedTime relativeDateStringFromNow];
+    
+    [self updateStatusWithBot:bot];
+    
+    [self.activityIndicator stopAnimating];
+}
+
+- (void)updateForInProgressIntegrationWithBot:(Bot *)bot
+{
+    self.botNameLabel.textColor = [UIColor colorWithRed:81/255.0 green:250/255.0 blue:0 alpha:1.0];
+    
+    self.iconImageView.adjustsImageWhenAncestorFocused = NO;
+    
+    self.stackView.hidden = YES;
+    
+    self.timeLabel.hidden = YES;
+    self.activityLabel.hidden = NO;
+    self.activityLabel.text = [NSString stringWithFormat:@"%@...", [bot.lastIntegration.currentStep capitalizedString]];
+    
+    [self.activityIndicator startAnimating];
+}
 
 - (void)updateStatusWithBot:(Bot *)bot
 {
@@ -119,6 +164,11 @@
         self.staticAnalysisBackgroundView.hidden = YES;
         self.unitTestBackgroundView.hidden = YES;
     }
+    else
+    {
+        self.staticAnalysisBackgroundView.hidden = NO;
+        self.unitTestBackgroundView.hidden = NO;
+    }
 }
 
 - (void)updateBadgeViewWithBot:(Bot *)bot
@@ -128,9 +178,9 @@
     NSString *failureString = [NSString stringWithFormat:@"%lu", bot.failureCount];
     
     self.badgeLabel.text = failureString;
-
+    
     [self.badgeView.superview layoutIfNeeded];
-
+    
     if (failureString.length > 1)
     {
         self.badgeView.layer.cornerRadius = 20;
